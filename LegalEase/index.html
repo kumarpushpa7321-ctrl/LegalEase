@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LegalEase | AI-Powered Legal Document Generator</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Legal<span>Ease</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="generator.html">Generate</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#dashboard">Dashboard</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">Generate Legal Documents with AI</h1>
+            <p class="hero-subtitle">Create, edit and export professional legal document drafts in minutes.</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="generator.html" class="btn btn-accent btn-lg">Create Document</a>
+                <a href="#templates" class="btn btn-outline-light btn-lg">Explore Templates</a>
+            </div>
+            <p class="mt-4 small text-light opacity-75">
+                Disclaimer: LegalEase provides AI-generated document drafts for informational purposes and does not replace professional legal advice.
+            </p>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="mb-4" style="color: var(--primary-color);">Your Dashboard</h2>
+            <div class="row mb-5">
+                <div class="col-md-4 mb-3">
+                    <div class="stat-card">
+                        <h3 id="stat-generated">0</h3>
+                        <p>Documents Generated</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="stat-card">
+                        <h3 id="stat-downloaded">0</h3>
+                        <p>Documents Downloaded</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="stat-card">
+                        <h3 id="stat-templates">10</h3>
+                        <p>Available Templates</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-white">
+                    <h5 class="mb-0 text-primary">Recent Documents</h5>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0" id="recent-docs-table">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Type</th>
+                                    <th>Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recent-docs-body">
+                                <tr>
+                                    <td colspan="4" class="text-center text-muted py-3">No documents generated yet.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Templates Section -->
+    <section id="templates" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 style="color: var(--primary-color);">Popular Templates</h2>
+                <p class="text-muted">Select a template to start generating your document.</p>
+            </div>
+            <div class="row">
+                <!-- Template Cards -->
+                <div class="col-md-4 col-lg-3">
+                    <div class="template-card" onclick="startGeneration('Employment Contract')">
+                        <div class="template-icon"><i class="bi bi-person-lines-fill"></i></div>
+                        <h5>Employment Contract</h5>
+                        <p class="text-muted small">Standard contract for hiring new employees.</p>
+                        <button class="btn btn-outline-primary btn-sm mt-2 w-100">Use Template</button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="template-card" onclick="startGeneration('Non-Disclosure Agreement (NDA)')">
+                        <div class="template-icon"><i class="bi bi-shield-lock"></i></div>
+                        <h5>NDA</h5>
+                        <p class="text-muted small">Protect confidential information and trade secrets.</p>
+                        <button class="btn btn-outline-primary btn-sm mt-2 w-100">Use Template</button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="template-card" onclick="startGeneration('Lease Agreement')">
+                        <div class="template-icon"><i class="bi bi-house"></i></div>
+                        <h5>Lease Agreement</h5>
+                        <p class="text-muted small">Contract for renting residential or commercial property.</p>
+                        <button class="btn btn-outline-primary btn-sm mt-2 w-100">Use Template</button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="template-card" onclick="startGeneration('Freelance Work Contract')">
+                        <div class="template-icon"><i class="bi bi-laptop"></i></div>
+                        <h5>Freelance Contract</h5>
+                        <p class="text-muted small">Agreement between a business and an independent contractor.</p>
+                        <button class="btn btn-outline-primary btn-sm mt-2 w-100">Use Template</button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="template-card" onclick="startGeneration('Service Agreement')">
+                        <div class="template-icon"><i class="bi bi-briefcase"></i></div>
+                        <h5>Service Agreement</h5>
+                        <p class="text-muted small">Contract defining terms of service provision.</p>
+                        <button class="btn btn-outline-primary btn-sm mt-2 w-100">Use Template</button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="template-card" onclick="startGeneration('Business Agreement')">
+                        <div class="template-icon"><i class="bi bi-building"></i></div>
+                        <h5>Business Agreement</h5>
+                        <p class="text-muted small">General B2B contract for partnerships.</p>
+                        <button class="btn btn-outline-primary btn-sm mt-2 w-100">Use Template</button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="template-card" onclick="startGeneration('Partnership Agreement')">
+                        <div class="template-icon"><i class="bi bi-diagram-3"></i></div>
+                        <h5>Partnership Agreement</h5>
+                        <p class="text-muted small">Establish terms for a business partnership.</p>
+                        <button class="btn btn-outline-primary btn-sm mt-2 w-100">Use Template</button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="template-card" onclick="startGeneration('General Contract')">
+                        <div class="template-icon"><i class="bi bi-file-earmark-text"></i></div>
+                        <h5>General Contract</h5>
+                        <p class="text-muted small">A flexible contract template for various needs.</p>
+                        <button class="btn btn-outline-primary btn-sm mt-2 w-100">Use Template</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="mb-1">&copy; 2026 LegalEase. All rights reserved.</p>
+            <p class="small opacity-75">Not a substitute for professional legal advice.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
